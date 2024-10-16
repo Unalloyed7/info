@@ -1,0 +1,30 @@
+
+class Day:
+    def __init__(self):
+        self.schedule = {}
+
+    def add(self, time, event):
+        self.schedule[time] = event
+
+    def remove(self, time):
+        del self.schedule[time]
+
+    def view(self):
+        for time in sorted(self.schedule.keys()):
+            print(time, self.schedule[time])
+
+class Week:
+    def __init__(self):
+        self.days = {'Monday': Day(), 'Tuesday': Day(), 'Wednesday': Day(), 'Thursday': Day(), 'Friday': Day(), 'Saturday': Day(), 'Sunday': Day()}
+
+    def add(self, day, time, event):
+        self.days[day].add(time, event)
+
+    def remove(self, day, time):
+        self.days[day].remove(time)
+
+    def view_schedule(self):
+        for day in self.days:
+            print(day, ':')
+            self.days[day].view()
+
